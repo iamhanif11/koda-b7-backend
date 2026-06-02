@@ -17,5 +17,5 @@ jobs:
         uses: macbre/push-to-ghrc@master
         with:
           image_name: ${{ github.repository }}
-          github_token: ${{ secret.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           image_tag: latest
