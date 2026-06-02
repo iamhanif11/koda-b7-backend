@@ -1,0 +1,24 @@
+name: Build and Publish to GHCR
+
+on:
+  push:
+    branches:
+      -main
+
+jobs:
+  push-image:
+    runs-on: "ubuntu-latest"
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Build and Push Docker Image
+        uses: macbre/push-to-ghrc@master
+        with:
+        image_name: ${{ github.repository }}
+        github_token: ${{ secret.GITHUB_TOKEN }}
+        image_tag: latest
